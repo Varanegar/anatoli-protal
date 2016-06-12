@@ -1,0 +1,1 @@
+A portal website that handles Applications, modules, module resources, users and permissions.
