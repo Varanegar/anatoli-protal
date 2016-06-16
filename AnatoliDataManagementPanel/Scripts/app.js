@@ -389,3 +389,62 @@ function changePasswordViewModel() {
         self.confirmNewPass('');
     };
 };
+
+function settingsViewModel() {
+    var self = this;
+
+    self.backendUrl = ko.observable(baseBackendUrl);
+    self.appOwnerKey = ko.observable(privateOwnerId);
+    self.dataOwnerKey = ko.observable(dataOwnerId);
+    self.dataOwnerCenterKey = ko.observable(dataOwnerCenterId);
+    self.openSettingsForm = ko.observable(false);
+
+    self.showSettingsForm = function () {
+        self.openSettingsForm(true);
+    };
+
+    self.saveSettings = function () {
+        if (!isValidGuid(self.appOwnerKey())) {
+            alert('App owner key is invalid.');
+            return;
+        }
+
+        if (!isValidGuid(self.dataOwnerKey())) {
+            alert('Data owner key is invalid.');
+            return;
+        }
+
+        if (!isValidGuid(self.dataOwnerCenterKey())) {
+            alert('Data owner center key is invalid.');
+            return;
+        }
+
+        var url = $.trim(self.backendUrl());
+
+        if (!isValidBackendUrl(url)) {
+            alert('Backend url is not valid.');
+            return;
+        }
+
+        if (url.endsWith('/')) {
+            alert('Remove last / character from URL.');
+            return;
+        }
+
+        baseBackendUrl = url;
+        privateOwnerId = self.appOwnerKey();
+        dataOwnerId = self.dataOwnerKey();
+        dataOwnerCenterId = self.dataOwnerCenterKey();
+        self.openSettingsForm(false);
+    };
+
+    function isValidGuid(guidData) {
+        var guidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+        return guidPattern.test(guidData);
+    }
+
+    function isValidBackendUrl(url) {
+        var urlRegex = /^https?\:\/\/[^\/\s]+(\/.*)?$/;
+        return urlRegex.test(url);
+    }
+};

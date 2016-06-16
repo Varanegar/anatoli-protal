@@ -17,7 +17,17 @@
                 @Html.ActionLink("Data Management Panel", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="@Url.Action("Index", "Application")">Apps</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Apps
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("Index","Application")">Applications</a></li>
+                        <li><a href="@Url.Action("Index","Application")">Application Owners</a></li>
+                        @*<li><a href="#">Page 1-3</a></li>*@
+                    </ul>
+                </li>
                 <li><a href="@Url.Action("Index", "Module")">Modules</a></li>
                 <li><a href="@Url.Action("Index", "Resource")">Module Resources</a></li>
                 <li><a href="@Url.Action("PermissionCatalogs", "UserManager")">Permission Catalogs</a></li>
@@ -30,7 +40,32 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Anatoli Data Managment | <a href="javascript:void(0);" data-bind="click: showSettingsForm">Settings</a></p>
+            <div class="hidden">
+                <div id="settings-form" data-bind="kendoWindow: { isOpen: openSettingsForm, width: 400, resizable:false, title: 'Settings', position: { top: '20%', left:'30%' } }">
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="backendUrl">Backend service URL:</label>
+                            <input class="form-control" name="backendUrl" type="text" data-bind="value: backendUrl" placeholder="Backend url" />
+                        </div>
+                        <div class="form-group">
+                            <label for="appOwnerKey">Data owner key:</label>
+                            <input class="form-control" name="appOwnerKey" type="text" data-bind="value: appOwnerKey" placeholder="applicaiton owner key" />
+                        </div>
+                        <div class="form-group">
+                            <label for="dataOwnerKey">Data owner key:</label>
+                            <input class="form-control" name="dataOwnerKey" type="text" data-bind="value: dataOwnerKey" placeholder="data owner key" />
+                        </div>
+                        <div class="form-group">
+                            <label for="dataOwnerCenterKey">data owner center key:</label>
+                            <input class="form-control" name="dataOwnerCenterKey" type="text" data-bind="value: dataOwnerCenterKey" placeholder="data owner center key" />
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-success" type="submit" value="Save" data-bind="click: saveSettings" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 
@@ -105,12 +140,13 @@
     <script>
         $(function () {
             ko.applyBindings(accountManagerApp, $(".login-form")[0]);
-
             $(document).on("click", ".glyphicon-log-out", function () {
                 accountManagerApp.logout();
             });
 
             headerMenu.refreshHeaderMenu();
+
+            ko.applyBindings(new settingsViewModel(), $('footer')[0]);
         });
     </script>
 
