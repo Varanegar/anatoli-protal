@@ -41,6 +41,7 @@ namespace AnatoliDataManagementPanel.App_Start
                     "~/Scripts/app.js",
                     "~/Scripts/app.viewModels.users.js",
                     "~/Scripts/app.viewModels.apps.js",
+                    "~/Scripts/app.viewModels.dataOwners.js",
                     "~/Scripts/app.viewModels.modules.js",
                     "~/Scripts/app.viewModels.resources.js",
                     "~/Scripts/app.viewModels.catalogs.js"));

@@ -13,5 +13,10 @@ namespace AnatoliDataManagementPanel.Controllers
         {
             return View();
         }
+
+        public ActionResult DataOwners()
+        {
+            return View();
+        }
     }
 }

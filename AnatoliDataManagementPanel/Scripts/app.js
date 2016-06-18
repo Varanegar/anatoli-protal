@@ -355,6 +355,10 @@ function accountManagerViewModel() {
 };
 var accountManagerApp = new accountManagerViewModel();
 
+function logOut() {
+    accountManagerApp.logout();
+}
+
 function changePasswordViewModel() {
     // Data
     var self = this;

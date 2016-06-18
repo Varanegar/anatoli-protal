@@ -25,6 +25,8 @@
 	permissionToCatalogUrl: baseBackendUrl + '/api/permissions/addToCatalog',
 	permissionRemoveFromCatalogUrl: baseBackendUrl + '/api/permissions/removeFromCatalog',
 
+	dataOwnersUrl: baseBackendUrl + "/api/dataOwners/list",
+
 	SuppliersUrl: baseBackendUrl + '/api/gateway/base/supplier/suppliers',
 	filterSuppliersUrl: baseBackendUrl + '/api/gateway/base/supplier/filterSuppliers',
 

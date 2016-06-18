@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "AppOwners";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="dataOwner-management-page">
+    <h2>Data Owners</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div id="dataOwner-management-grid"></div>
+        </div>
+    </div>
+    <script type="text/x-kendo-template" id="toolbar-template">
+        <div class="toolbar">
+            <button type="button" data-bind="click: addDataOwner" class="k-button k-button-icontext">
+                <span class="k-icon k-add"></span>افزودن
+            </button>
+        </div>
+    </script>
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            ko.applyBindings(new dataOwnersViewModel(), $('.dataOwner-management-page')[0]);
+        });
+    </script>
+}

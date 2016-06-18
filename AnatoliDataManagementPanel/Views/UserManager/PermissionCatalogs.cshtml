@@ -18,7 +18,7 @@
     </div>
 </script>
 
-<div class="container">
+<div id="permission-container">
     <div class="row">
         <div class="col-md-3">
             <h3>Permission Catalogs</h3>
@@ -76,7 +76,7 @@
 
     <script>
         $(function () {
-            ko.applyBindings(new catalogViewModel(), $('.container')[0]);
+            ko.applyBindings(new catalogViewModel(), $('#permission-container')[0]);
         });
     </script>
 }

@@ -166,6 +166,7 @@
     <Content Include="Content\KendoUI\images\kendoui.woff" />
     <Content Include="Scripts\app.toastr.js" />
     <Content Include="Scripts\app.viewModels.apps.js" />
+    <Content Include="Scripts\app.viewModels.dataOwners.js" />
     <Content Include="Scripts\app.viewModels.modules.js" />
     <Content Include="Scripts\app.viewModels.users.js" />
     <Content Include="Scripts\app.globals.js" />
@@ -241,6 +242,7 @@
     <Content Include="Views\UserManager\Permissions.cshtml" />
     <Content Include="Views\UserManager\Stocks.cshtml" />
     <Content Include="Views\UserManager\PermissionCatalogs.cshtml" />
+    <Content Include="Views\Application\DataOwners.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
